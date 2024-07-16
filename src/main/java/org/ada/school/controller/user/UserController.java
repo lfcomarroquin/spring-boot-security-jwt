@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @RestController
@@ -42,6 +43,7 @@ public class UserController
 
 
     @PostMapping
+    @RolesAllowed("ADMIN")
     public ResponseEntity<User> create( @RequestBody UserDto userDto )
     {
         return ResponseEntity.ok( userService.create( userDto ) );
